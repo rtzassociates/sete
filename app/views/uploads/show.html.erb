@@ -1,0 +1,21 @@
+<%= title_tag "Download History" %>
+<div id="uploads">
+  <%= render @upload %>
+</div>
+<table id="downloads" class="table table-striped">
+  <thead>
+    <th>Downloaded By</th>
+    <th>Downloaded On</th>
+  </thead>
+  <tbody>
+    <% @downloads.each do |download| %>
+      <tr>
+        <td><%= link_to download.user.name, download.user %></td>
+        <td>
+          <%= download.created_at.strftime('%b %e, %Y - %l:%M %p') %>
+          ( <%= time_ago_in_words download.created_at %> ago )
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

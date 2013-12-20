@@ -1,0 +1,4 @@
+<%= form_tag unshare_upload_path(upload), :method => 'post', class: "form-inline" do %>
+  <%= hidden_field_tag :user_id, params[:id] %>
+  <%= submit_tag "Unshare", class: "btn" %>
+<% end %>

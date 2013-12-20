@@ -1,0 +1,14 @@
+<% if current_user.allowed_users.any? %>
+  <div id="allowed_users">
+    <p class="muted">
+      Users that you can share files with:
+    </p>
+    <ul>
+    <% current_user.allowed_users.each do |a| %>
+      <li class="allowed_user">
+        <%= link_to a.name, a %>
+        <i class="icon-share"></i> <%= current_user.uploads.shared_with_count(a) %>
+      </li>
+    <% end %>
+  </div>
+<% end %>

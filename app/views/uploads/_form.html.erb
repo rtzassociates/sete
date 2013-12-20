@@ -1,0 +1,14 @@
+<%= form_for @upload, :html => {:multipart => true } do |f| %>
+  <div class="control-group">
+    <div class="controls">
+      <p class="muted">
+        Choose some users you would like to share this file with.
+      </p>
+      <%= f.collection_select :shared_with_ids, @allowed_recipients, :id, :name, {}, { multiple: true, :class => "span6" } %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Share', :class => "btn btn-success" %>
+    <%= link_to "Cancel", :back, :class => "btn" %>
+  </div>
+<% end %>

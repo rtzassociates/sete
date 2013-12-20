@@ -1,0 +1,8 @@
+<% if @upload.new_record? %>
+  alert("Failed to upload file: <%= j @upload.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+  $("#uploads").prepend("<%= j render(@upload) %>");
+  $('.alert-notice').hide()
+  $('#flash').html('<div class="alert alert-notice">File uploaded successfully</div>')
+  $('#nothing_to_show').hide()
+<% end %>

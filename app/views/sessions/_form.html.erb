@@ -1,0 +1,17 @@
+<%= form_tag sessions_path, :class => "well", :style => "text-align:center" do %>
+  <div class="control-group">
+    <%= label_tag :login, "User Name", :class => "control-label" %>
+    <div class="controls">
+      <%= text_field_tag :login, params[:login] %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= label_tag :password, "Password", :class => "control-label" %>
+    <div class="controls">
+      <%= password_field_tag :password %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Log in", :class => 'btn' %>
+  </div>
+<% end %>

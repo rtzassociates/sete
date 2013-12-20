@@ -1,0 +1,27 @@
+<% unless user.is?(current_user) %>
+  <div class="user collection">
+    <div class="pull-left">
+      <p>
+        <span id="user_name">
+          <%= link_to user.name, user %>
+        </span>
+        <span id="upload_count">
+          ( <%= pluralize user.uploads.count, "upload" %> )
+        </span>
+      </p>
+      <p id="allowed_agencies">
+        Can share uploads with <%= allowed_users_for(user) %>
+      </p>
+    </div>
+    <div class="pull-right">
+      <p>
+        <% if allow? 'agencies', 'edit', user %>
+          <%= link_to 'Edit', edit_user_path(user), :class => "btn" %>
+        <% end %>
+        <% if allow? 'agencies', 'destroy', user %>   
+          <%= link_to 'Delete', user, :method => :delete, :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger" %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<% if upload.downloads.any? %>
+  <span id="download_count">
+    <% if allow? "uploads", "show", upload %>
+      <%= link_to( raw("<i class='icon-download-alt'> #{upload.downloads.count}</i>"), upload )%>
+    <% end %>
+  </span>
+<% end %>

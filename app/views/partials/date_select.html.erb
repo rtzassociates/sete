@@ -1,0 +1,8 @@
+<div id="date_select">
+  <p class="muted">Filter By Date</p>
+  <%= form_tag route, :class => 'form-horizontal', :method => 'get' do %>
+    <%= text_field_tag :start_date, params[:start_date], :placeholder => "Start Date" %>
+    <%= text_field_tag :end_date, params[:end_date], :placeholder => "End Date" %>
+    <%= submit_tag "Submit", :name => nil, :class => 'btn btn-primary' %>
+  <% end %>
+</div>

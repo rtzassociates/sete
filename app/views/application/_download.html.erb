@@ -1,0 +1,6 @@
+<%= form_for Download.new, html: { class: "form-inline" } do |f| %>
+  <%= f.hidden_field :upload_id, value: upload.id %>
+  <% if allow? "downloads", "create", upload %>
+    <%= f.submit "Download", class: "btn" %>
+  <% end%>
+<% end %>

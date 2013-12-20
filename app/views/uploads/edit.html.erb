@@ -1,0 +1,12 @@
+<%= title_tag "Share Upload" %>
+
+<div id="share">
+  <%= render @upload %>
+  <div id="shares_form">
+    <%= render 'form' %>
+  </div>
+</div>
+
+<script>
+  $('#upload_shared_with_ids').chosen()
+</script>

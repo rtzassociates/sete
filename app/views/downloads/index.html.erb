@@ -1,0 +1,17 @@
+<% if current_user.admin? %>
+  <%= title_tag "All Downloads" %>
+<% else %>
+  <%= title_tag "Download Files" %>
+<% end%>
+
+<%= render :template => "partials/date_select", :locals => { :route => downloads_path } %>
+
+<div id="uploads">
+  <% if @downloads.empty? %>
+    <%= render partial: "nothing", :locals => { :user => nil } %>
+  <% else %>
+    <%= render @downloads %>   
+  <% end %>
+</div>
+
+<%= will_paginate @downloads %>

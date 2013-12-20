@@ -1,0 +1,16 @@
+<%= title_tag "User List" %>
+
+ <p class="muted">Search by user name</p>
+ <%= render :template => 'partials/search_form', :locals => { :collection => @users } %>
+
+<h4><%= link_to "Add A User", new_user_path %></h4>
+
+<div id="users">
+  <% if @users.any? %>
+    <%= render @users %>
+  <% else %>
+    <b>Nothing to show</b>
+  <% end %>
+</div>
+
+<%= will_paginate @users %>

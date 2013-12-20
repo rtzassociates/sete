@@ -1,0 +1,13 @@
+<%= title_tag "All Uploads" %>
+
+<%= render :template => "partials/date_select", :locals => { :route => uploads_path } %>
+
+<div id="uploads">
+  <% if @uploads.empty? %>
+    <%= render :template => "partials/blank_slate", :locals => { :user => nil } %>
+  <% else %>
+    <%= render @uploads %>   
+  <% end %>
+</div>
+
+<%= will_paginate @uploads %>

@@ -1,0 +1,29 @@
+<div class="upload collection">
+    <div class="pull-left">
+      <p>
+        <span id="filename">
+          <%= upload.filename %>
+        </span>
+        <% if upload.downloads.empty? %>
+          <span class="badge">New</span>
+        <% end %>
+      </p>
+      <p id="uploaded_by">
+        Uploaded by <%= link_to upload.user.name, upload.user %>
+        on <%= upload.created_at.strftime('%b %e, %Y - %l:%M %p') %>   
+      </p>
+      <% if allow? "uploads", "edit", upload %>
+        <p id="shared_with">
+          Shared with <%= users_for(upload) %>
+        </p>
+      <% end %>
+
+    </div>
+    <div class="pull-right">
+      <p id="filesize">
+        <%= render partial: "download_count", locals: { upload: upload } %>
+        <%= number_to_human_size upload.asset.file.size %>
+      </p>
+      <%= render partial: "actions", locals: { upload: upload } %>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div id="flash"></div>
+<div id="uploader">
+    <%= form_for upload, :html => {:multipart => true, :class => "form-inline"} do |f| %>
+      <% unless user.is?(current_user) %>
+        <%= f.hidden_field :shared_with_ids, :value => user.id %>
+      <% end %>
+      <div class="control-group">
+        <div class="controls">
+          <h4>   
+            <% if user.is?(current_user) %>
+               Choose some files to upload
+            <% else %>
+               Share some files with <%= user.name %>
+            <% end %>
+          </h4>
+          <hr>
+          <div class="input-append"> 
+            <%= f.file_field :asset, name: "upload[asset]", :multiple => true %>
+          </div>   
+        </div>
+      </div>
+    <% end %>
+
+</div>
+<div id="uploads_in_progress"></div>
+
+<script id="template-upload" type="text/x-tmpl">
+  <div class="upload_progress" data-name="{%=o.name%}">
+    <p style="margin-bottom: 10px;">{%=o.name%}</p>
+    <div class="progress"><div class="bar" style="width: 0%"></div></div>
+  </div>
+</script>

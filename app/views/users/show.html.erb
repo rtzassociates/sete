@@ -1,0 +1,15 @@
+<%= title_tag @title %>
+
+<%= render :template => "partials/uploader", :locals => { :upload => @upload, :user => @user }%>
+
+<%= render :template => "partials/date_select", :locals => { :route => @user } %>
+
+<div id="uploads">
+  <% if @uploads.empty? %>
+    <%= render partial: "nothing", :locals => { :user => @user } %>
+  <% else %>
+    <%= render @uploads %>   
+  <% end %>
+</div>
+
+<%= will_paginate @uploads %>

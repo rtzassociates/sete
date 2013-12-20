@@ -1,0 +1,392 @@
+@import "twitter/bootstrap/bootstrap";
+/*@import "twitter/bootstrap/responsive";*/
+
+@border_color: #E5E5E5;
+@background_color: #F7F7F7;
+
+.base {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: @border_color;
+  background-color: @background_color;
+}
+
+.lid {
+  border-top: solid;
+  border-left: solid;
+  border-right: solid;
+  border-width: 1px;
+  border-color: @border_color;
+  background-color: @background_color;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-image: url("/stripe.png");
+}
+
+#title {
+  .bordered;
+  margin-bottom: 1em; 
+}
+
+#user_search {
+  .bordered;
+  margin-bottom: 1em; 
+}
+
+#users {
+ .lid; 
+}
+
+.collection {
+  .media;
+  .base;
+  padding: 1em;
+  margin-top: 0px;
+}
+
+.medium {
+  font-size:18px;
+}
+
+span#user_name {
+  .medium;
+}
+
+#filename {
+  .medium;
+  margin-bottom: 1em;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+#download_count {
+  .muted;
+  padding-right: 10px;
+}
+
+div#shares_form {
+  padding: 1em;
+  padding-top: 2em;
+}
+
+table#downloads {
+  margin-top: 1em;
+  border: solid;
+  border-width: 1px;
+  border-color: @border_color;
+}
+
+li.allowing_user {
+  padding: 5px;
+}
+
+li.allowed_user {
+  padding: 5px;
+  font-size: medium;
+}
+
+table#downloads th {
+  padding-left: 15px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.badge {
+  padding: 4px;
+}
+
+p#filesize {
+  .muted;
+  text-align: right;
+  padding-top: 3px; 
+}
+
+#upload_count {
+  .muted; 
+}
+
+div#allowed_users {
+  padding: 1em;
+}
+
+#allowed_users {
+  .muted 
+}
+
+#allowing_users {
+  padding: 1em;
+}
+
+#user_form {
+  .bordered;
+  padding-top: 2em;
+}
+
+.help {
+  .muted;
+  padding-left: 5px;
+  margin-bottom: 15px;
+}
+
+.container {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 2em;
+  background-color: white;
+  .box;
+}
+
+#errors {
+  padding-left: 2em;
+  margin-bottom: 2em;
+  .danger;
+}
+
+.upload_progress {
+  padding: 1em;
+}
+
+#user_nav {
+  .bordered;
+  margin-bottom: 1em;
+}
+
+#admin_nav {
+  .bordered;
+  padding-top: 2em;
+  margin-bottom: 1em;
+}
+
+form {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+#shares {
+  text-align: center;
+}
+
+#share {
+  .bordered;
+}
+
+label {
+  margin-bottom: 1em;
+}
+
+#logo_container {
+  margin-bottom:20px;
+}
+
+#uploader {
+  margin-bottom: 1em;
+  .bordered;
+  border-radius: 5px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.alert {
+  text-align: center;
+  padding: 1em;
+  border: solid;
+  border-width: 2px;
+  font-size: 18px;
+  background-color: white;
+}
+
+.alert-alert {
+  background-color: yellow;
+  color: black; 
+}
+
+.alert-notice { 
+  color: green;
+  border-color: green;
+}
+
+.alert-error {
+  color: red;
+  border-color: red;
+}
+
+.danger {
+  color: red;
+}
+
+ul.nav-tabs {
+  background-color: white;
+}
+
+.icon-share {
+  padding-left: 10px;
+}
+
+.table td {
+  vertical-align: middle;
+  padding: 1em;
+}
+
+#uploads {
+  .lid
+}
+
+.upload {
+  padding: 1em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  background-color: @background_color;
+}
+
+#uploads_in_progress {
+  margin-bottom: 1em;
+  background-color: @background_color;
+  border: solid;
+  border-width: 1px;
+  border-color: @border_color;
+}
+
+a.nav {
+  padding-left: 10px;
+  padding-right: 10px; 
+}
+
+#date_select {
+  padding: 1em;
+  .lid;
+}
+
+#file {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+p#new_upload {
+  padding-top: 10px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.actions {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.bordered {
+  padding: 1em;
+  border: solid;
+  border-width: 1px;
+  border-color: @border_color;
+  background-color: @background_color;
+}
+
+#current_user {
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  .medium;
+  .muted;
+}
+
+.bordered-bottom {
+  border-top: solid;
+  border-width: 1px;
+  border-color: @border_color;
+}
+
+.box {
+  .box-shadow(~"2px 2px 3px rgba(0,0,0,.1), 0px 0px 5px rgba(0,0,0,.1)");
+}
+
+.box-shadow (@shadow1, @shadow2: transparent 0 0 0 ) {
+    -moz-box-shadow: @shadow1, @shadow2;
+    -webkit-box-shadow: @shadow1, @shadow2;
+    box-shadow: @shadow1, @shadow2;
+}
+
+#nav {
+  margin-bottom: 1em;
+  .bordered;
+}
+
+#logo {
+  text-align: center;
+  margin-bottom: 1em;
+  padding-top: 2em;
+  border: solid;
+  border-width: 1px;
+  border-color: @border_color;
+  background-color: @background_color;
+}
+
+a.logo {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 3em;
+  vertical-align: bottom;
+}
+
+#new_user {
+  text-align: left;
+  margin-bottom: 1em;
+}
+
+h1 {
+  text-align: center;
+  font-size: 32px;
+}
+
+.actions {
+  margin-top: 2em;
+}
+
+.hint {
+  color: gray;
+  padding: 1em;
+  font-size: 14px;
+}
+
+ul.nav li.active a {
+  background-color: @background_color;
+  color: gray;
+}
+
+ul.nav li.active a:hover {
+  background-color: @background_color;
+  color: gray;
+}
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings");
+@iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+// Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
+//       have the proper paths. So for now we use the absolute path.
+@fontAwesomeEotPath: asset-path("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot#iefix");
+@fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-path("fontawesome-webfont.svg");
+
+// Font Awesome
+@import "fontawesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;

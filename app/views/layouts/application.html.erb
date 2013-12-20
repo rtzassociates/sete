@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sete</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ 
+<div class="container">
+  <div class="row"> 
+
+    <div class="span12">
+      <%= render partial: "logo" %>
+      <%= render partial: "flash", locals: { flash: flash } %>
+    </div> 
+  
+  <% if params[:controller] == "sessions" %>
+
+    <div class="span12">
+      <%= yield %>
+    </div>
+
+  <% else %>
+  
+    <div class="span3">
+      <%= render partial: "nav" %>
+      <%= render partial: "allowed_users" %>  
+    </div>
+  
+    <div class="span9">        
+      <%= yield %>
+    </div>
+
+  <% end %>
+
+  </div>
+</div>
+
+</body>
+</html>

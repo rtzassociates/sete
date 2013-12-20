@@ -1,0 +1,13 @@
+<%= form_for Download.new, html: { class: "form-inline" } do |f| %>
+  <%= f.hidden_field :upload_id, value: upload.id %>
+
+  <% if allow? "downloads", "create", upload %>
+    <%= f.submit "Download", class: "btn" %>
+  <% end%>
+  <% if allow? "uploads", "edit", upload %>
+    <%= link_to "Share", edit_upload_path(upload), class: "btn btn-success" %>
+  <% end %>
+  <% if allow? "uploads", "destroy", upload %>
+    <%= link_to "Delete", upload, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  <% end %>
+<% end %>

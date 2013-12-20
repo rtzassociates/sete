@@ -1,0 +1,69 @@
+<%= form_for @user, :html => { :class => "form-horizontal" } do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="errors">
+      <% @user.errors.full_messages.each do |m| %>
+        <%= m %><br />
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name, :placeholder => "User Name", :autocomplete => 'off' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :password, :class => "control-label" %>
+    <div class="controls">
+      <%= f.password_field :password, :placeholder => "Password", :autocomplete => 'off' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :password_confirmation, "Confirm Password", :class => "control-label" %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation" %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <%= f.label :time_zone %>
+      <p class="help">
+        Display file timestamps in the user's time zone.
+      </p>
+      <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
+    </div>
+  </div>
+  
+  <% if current_user.admin? && @user.is_not?(current_user) %>
+    <div class="control-group">
+      <div class="controls">
+      <hr>
+      <p><strong>Sharing Permissions</strong></p>
+      <p class="help">
+        Who can this user can share files with?
+      </p> 
+      <%= f.collection_select :allowed_user_ids, @user.users_choices, :id, :name, {}, { multiple: true, :class => "span6" } %>
+    </div>
+
+    <br />
+  
+    <div class="control-group">
+      <div class="controls">
+      <p class="help">
+        Who can share files with this user?
+      </p> 
+      <%= f.collection_select :allowing_user_ids, @user.users_choices, :id, :name, {}, { multiple: true, :class => "span6" } %>
+    </div>
+  <% end %>
+  
+  <div class="actions centered">
+    <%= f.submit (@user.new_record? ? "Create user" : "Update Account"), :class => "btn btn-primary" %>
+    <%= link_to 'Cancel', :back, :class => "btn" %>
+  </div>
+  
+<% end %>
