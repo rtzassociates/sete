@@ -28,6 +28,7 @@ class UploadsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:upload][:user_id])
     @upload = Upload.new(params[:upload])
     @upload.user = current_user
     @upload.save

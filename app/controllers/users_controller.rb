@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
 
       flash[:notice] = "Account was successfully updated"
-      
+
       if @user.is?(current_user)
         redirect_to current_user
       else
@@ -40,8 +40,9 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @title = @user.is?(current_user) ? "Upload Files" : @user.name
+    @title = @user == current_user ? "Upload Files" : @user.name
     @upload = Upload.new
+
     if current_user.admin?
       @uploads = @user.uploads
     else

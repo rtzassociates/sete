@@ -1,5 +1,3 @@
-<%= title_tag @title %>
-
 <%= render :template => "partials/uploader", :locals => { :upload => @upload, :user => @user }%>
 
 <%= render :template => "partials/date_select", :locals => { :route => @user } %>
@@ -8,7 +6,9 @@
   <% if @uploads.empty? %>
     <%= render partial: "nothing", :locals => { :user => @user } %>
   <% else %>
-    <%= render @uploads %>   
+    <% @uploads.each do |upload| %>
+      <%= render partial: "/uploads/upload", locals: { :upload => upload, :user => @user } %> 
+    <% end %>  
   <% end %>
 </div>
 

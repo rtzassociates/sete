@@ -1,7 +1,7 @@
 <%= title_tag "Share Upload" %>
 
 <div id="share">
-  <%= render @upload %>
+  <%= render partial: 'uploads/upload', locals: { upload: @upload, user: current_user } %>
   <div id="shares_form">
     <%= render 'form' %>
   </div>

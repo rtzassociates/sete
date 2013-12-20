@@ -1,9 +1,13 @@
 <div id="flash"></div>
 <div id="uploader">
     <%= form_for upload, :html => {:multipart => true, :class => "form-inline"} do |f| %>
+
+      <%= f.hidden_field :user_id, :value => user.id %>
+
       <% unless user.is?(current_user) %>
         <%= f.hidden_field :shared_with_ids, :value => user.id %>
       <% end %>
+
       <div class="control-group">
         <div class="controls">
           <h4>   

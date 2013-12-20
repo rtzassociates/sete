@@ -10,7 +10,9 @@
   <% if @downloads.empty? %>
     <%= render partial: "nothing", :locals => { :user => nil } %>
   <% else %>
-    <%= render @downloads %>   
+    <% @downloads.each do |download| %>
+      <%= render partial: "/uploads/upload", locals: { upload: download, user: current_user } %>
+    <% end %>   
   <% end %>
 </div>
 

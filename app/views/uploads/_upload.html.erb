@@ -24,6 +24,6 @@
         <%= render partial: "download_count", locals: { upload: upload } %>
         <%= number_to_human_size upload.asset.file.size %>
       </p>
-      <%= render partial: "actions", locals: { upload: upload } %>
+      <%= render partial: "actions", locals: { upload: upload, user: user } %>
     </div>
 </div>
