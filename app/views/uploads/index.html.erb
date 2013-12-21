@@ -4,9 +4,11 @@
 
 <div id="uploads">
   <% if @uploads.empty? %>
-    <%= render :template => "partials/blank_slate", :locals => { :user => nil } %>
+    <%= render partial: "nothing", :locals => { :user => nil } %>
   <% else %>
-    <%= render @uploads %>   
+    <% @uploads.each do |upload| %>
+      <%= render partial: "uploads/upload", locals: { user: current_user, upload: upload } %>
+    <% end %>  
   <% end %>
 </div>
 

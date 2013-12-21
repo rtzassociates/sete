@@ -12,6 +12,18 @@ class Upload < ActiveRecord::Base
   has_many :downloads
   
   default_scope :order => 'id DESC'
+
+  before_save :add_allowed_users_if_missing
+
+  def add_allowed_users_if_missing
+    shared_with_ids.each do |user_id|
+      shared_user = User.find(user_id)
+      unless user.allowed_users.include? shared_user
+        user.allowed_users << shared_user
+        user.save
+      end
+    end
+  end
   
   def filename
     asset.to_s.split("/").last
@@ -22,19 +34,7 @@ class Upload < ActiveRecord::Base
   end
   
   def self.shared_with(user)
-    if user.admin?
-      scoped
-    else
-      joins(:shares).where("shares.user_id = ?", user.id)
-    end  
-  end
-  
-  def self.shared_with_count(user)
-    if user.admin?
-      user.uploads.count
-    else
-      Upload.shared_with(user).count
-    end
+    joins(:shares).where("shares.user_id = ?", user.id) 
   end
   
   def shared_with?(user)

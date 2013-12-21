@@ -8,12 +8,12 @@
           <span class="badge">New</span>
         <% end %>
       </p>
-      <p id="uploaded_by">
+      <p id="uploaded_by" class="muted">
         Uploaded by <%= link_to upload.user.name, upload.user %>
-        on <%= upload.created_at.strftime('%b %e, %Y - %l:%M %p') %>   
+        on <%= upload.created_at.strftime('%b %e, %Y at %l:%M %p') %>   
       </p>
       <% if allow? "uploads", "edit", upload %>
-        <p id="shared_with">
+        <p id="shared_with" class="muted">
           Shared with <%= users_for(upload) %>
         </p>
       <% end %>
@@ -21,7 +21,9 @@
     </div>
     <div class="pull-right">
       <p id="filesize">
-        <%= render partial: "download_count", locals: { upload: upload } %>
+        <% if allow?("uploads", "edit", upload) %>
+          <%= render partial: "download_count", locals: { upload: upload } %>
+        <% end %>
         <%= number_to_human_size upload.asset.file.size %>
       </p>
       <%= render partial: "actions", locals: { upload: upload, user: user } %>

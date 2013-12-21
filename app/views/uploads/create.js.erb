@@ -5,4 +5,5 @@
   $('.alert-notice').hide()
   $('#flash').html('<div class="alert alert-notice">File uploaded successfully</div>')
   $('#nothing_to_show').hide()
+  $('#allowed_users').replaceWith("<%= j render partial: 'allowed_users' %>")
 <% end %>

@@ -18,12 +18,12 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by_slug(params[:id])
     @title = @user.is?(current_user) ? "My Account" : @user.name    
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by_slug(params[:id])
     if @user.update_attributes(params[:user])
 
       flash[:notice] = "Account was successfully updated"
@@ -39,20 +39,20 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
-    @title = @user == current_user ? "Upload Files" : @user.name
+    @user = User.find_by_slug(params[:id])
     @upload = Upload.new
 
-    if current_user.admin?
-      @uploads = @user.uploads
+    if @user == current_user
+      uploads = @user.uploads
     else
-      @uploads = @user.is?(current_user) ? @user.uploads : current_user.uploads.shared_with(@user)
+      uploads = current_user.uploads.shared_with(@user)
     end
-    @uploads = @uploads.uploaded_between(params[:start_date], params[:end_date]).page(params[:page]).per_page(25)
+
+    @uploads = uploads.uploaded_between(params[:start_date], params[:end_date]).page(params[:page]).per_page(25)
   end
   
   def destroy
-    @user = User.find(params[:id])
+    @user = User.find_by_slug(params[:id])
     @user.destroy
     redirect_to users_path, :notice => "User was successfully destroyed"
   end
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   private
   
   def current_resource
-    @current_resource ||= User.find(params[:id]) if params[:id]
+    @current_resource ||= User.find_by_slug(params[:id]) if params[:id]
   end
   
 end

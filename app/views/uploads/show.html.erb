@@ -1,6 +1,6 @@
 <%= title_tag "Download History" %>
 <div id="uploads">
-  <%= render @upload %>
+  <%= render partial: "uploads/upload", locals: { upload: @upload, user: current_user } %>
 </div>
 <table id="downloads" class="table table-striped">
   <thead>
@@ -12,8 +12,7 @@
       <tr>
         <td><%= link_to download.user.name, download.user %></td>
         <td>
-          <%= download.created_at.strftime('%b %e, %Y - %l:%M %p') %>
-          ( <%= time_ago_in_words download.created_at %> ago )
+          <%= download.created_at.strftime('%b %e, %Y at %l:%M %p') %>
         </td>
       </tr>
     <% end %>

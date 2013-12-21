@@ -23,9 +23,20 @@ class User < ActiveRecord::Base
 
   has_many :allowed_users, through: :exchanges, source: :allowing
   has_many :allowing_users, through: :reverse_exchanges, source: :allowed
+
+  validates :slug, uniqueness: true, presence: true
+  before_validation :generate_slug
+
+  def to_param
+    slug
+  end
   
+  def generate_slug
+    self.slug ||= name.parameterize
+  end
+
   def users_choices
-    User.all - User.admins - Array(self)
+    User.all - Array(self)
   end
   
   def allowed_users_with_admins
@@ -38,7 +49,7 @@ class User < ActiveRecord::Base
     else
       recipients = allowed_users
     end
-    recipients - User.admins - Array(self)
+    recipients - Array(self)
   end
   
   def is?(user)

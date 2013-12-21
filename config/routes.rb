@@ -8,7 +8,12 @@ Sete::Application.routes.draw do
   end
 
   resources :downloads
-  resources :users
+
+  resources :users do
+    member do
+      resources :uploads, :only => [ :index ]
+    end
+  end
   
   resources :sessions, :only => [ :new, :create, :destroy ]
   

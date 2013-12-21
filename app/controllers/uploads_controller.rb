@@ -1,6 +1,8 @@
 class UploadsController < ApplicationController
+
   def index
-    @uploads = Upload.uploaded_between(params[:start_date], params[:end_date]).page(params[:page]).per_page(25)
+    @user = User.find_by_slug(params[:id])
+    @uploads = @user.uploads.uploaded_between(params[:start_date], params[:end_date]).page(params[:page]).per_page(25)
   end
   
   def show
@@ -37,12 +39,17 @@ class UploadsController < ApplicationController
   def destroy
     @upload = Upload.find(params[:id])
     @upload.destroy
-    redirect_to @upload.user, :notice => "File deleted successfully"
+    if current_user.admin? && @upload.user != current_user
+      path = "/users/#{@upload.user.slug}/uploads/"
+    else
+      path = @upload.user
+    end
+    redirect_to path, :notice => "File deleted successfully"
   end
 
   def unshare
     @upload = Upload.find(params[:id])
-    @user = User.find(params[:user_id])
+    @user = User.find_by_slug(params[:user_id])
     @upload.unshare_with(@user)
     @upload.save
     redirect_to @user, :notice => "File unshared successfully"
@@ -51,7 +58,9 @@ class UploadsController < ApplicationController
   private
   
   def current_resource
-    @current_resource ||= Upload.find(params[:id]) if params[:id]
+    unless params[:action] == "index"
+      @current_resource ||= Upload.find(params[:id]) if params[:id]
+    end
   end
 
 end

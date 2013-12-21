@@ -8,7 +8,7 @@ class AssetUploader < CarrierWave::Uploader::Base
   storage :file
 
   def store_dir
-    "uploads/"
+    "#{Rails.root}/uploads/#{model.id}"
   end
 
 end

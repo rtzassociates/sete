@@ -5,10 +5,8 @@
         <span id="user_name">
           <%= link_to user.name, user %>
         </span>
-        <span id="upload_count">
-          ( <%= pluralize user.uploads.count, "upload" %> )
-        </span>
       </p>
+      <p class="muted"><%= pluralize user.uploads.count, "upload" %></p>
       <p id="allowed_agencies">
         Can share uploads with <%= allowed_users_for(user) %>
       </p>

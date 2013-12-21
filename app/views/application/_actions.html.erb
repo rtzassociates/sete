@@ -1,10 +1,10 @@
 <p class="actions">
   <% if params[:action] == "edit" %>
     <!-- do nothing -->
-  <% elsif current_user.admin? %>
-    <%= render partial: "manage", locals: { upload: upload } %>
   <% elsif params[:controller] == "downloads" %>
     <%= render partial: "download", locals: { upload: upload } %>
+  <% elsif params[:action] == "index" && current_user.admin? %>
+    <%= render partial: "manage", locals: { upload: upload } %>
   <% elsif upload.shared_with? user %>
     <%= render partial: "unshare", locals: { upload: upload } %>
   <% elsif current_user.can_manage? upload %>

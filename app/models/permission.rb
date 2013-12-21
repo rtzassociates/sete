@@ -10,7 +10,7 @@ class Permission
         user.id == upload.user.id
       end
       allow :downloads, [:index, :new, :create]
-      allow :uploads, [:edit, :update, :destroy, :unshare] do |upload|
+      allow :uploads, [:show, :edit, :update, :destroy, :unshare] do |upload|
         upload.user.id == user.id
       end
       allow_all if user.admin?
