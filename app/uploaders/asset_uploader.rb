@@ -11,4 +11,8 @@ class AssetUploader < CarrierWave::Uploader::Base
     "#{Rails.root}/uploads/#{model.id}"
   end
 
+  def filename
+    "#{@original_filename}".gsub(/\s+/, '_')
+  end
+
 end
