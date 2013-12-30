@@ -4,7 +4,7 @@
     <% if user == current_user %>
       <%= current_user.uploads.any? ? "No results found." : "You haven't uploaded any files yet." %>
     <% else %>
-      <%= current_user.allowed_uploads.any? ? "No results found." : "Once this user shares a file with you it will appear on this page for you to download." %>
+      <%= current_user.allowed_uploads.any? ? "No results found." : "Once a user shares a file with you it will appear on this page for you to download." %>
     <% end %>
   </p>
 </div>
