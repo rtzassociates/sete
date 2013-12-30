@@ -17,7 +17,7 @@
                Share some files with <%= user.name %>
                <% if current_user.admin? %>
                  <span class="pull-right">
-                   <%= link_to "View this user's files", "/users/#{user.name}/uploads/", :class => "btn btn-success" %>
+                   <%= link_to "View this user's files", "/users/#{user.slug}/uploads/", :class => "btn btn-success" %>
                   </span>
                <% end %>
             <% end %>
