@@ -105,10 +105,6 @@ class User < ActiveRecord::Base
     where(:admin => true)
   end
   
-  def downloads
-    Upload.shared_with(self)
-  end
-  
   private
   
   def prepare_password

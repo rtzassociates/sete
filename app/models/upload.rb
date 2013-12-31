@@ -9,7 +9,7 @@ class Upload < ActiveRecord::Base
   
   has_many :shares, :dependent => :destroy
   has_many :shared_with, through: :shares, :source => :user
-  has_many :downloads
+  has_many :downloads, :dependent => :destroy
   
   default_scope :order => 'id DESC'
 
