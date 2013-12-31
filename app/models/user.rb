@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone.zones_map(&:name)
   
   has_many :uploads, :dependent => :destroy
-  has_many :downloads
+  has_many :downloads, :dependent => :destroy
 
   has_many :shares, :dependent => :destroy
   has_many :shared_with, through: :shares, :source => :upload
