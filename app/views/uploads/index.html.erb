@@ -1,6 +1,6 @@
 <%= title_tag "All Uploads" %>
 
-<%= render :template => "partials/date_select", :locals => { :route => uploads_path } %>
+<%= render :template => "partials/date_select", :locals => { :route => "/users/#{@user.slug}/uploads/" } %>
 
 <div id="uploads">
   <% if @uploads.empty? %>
