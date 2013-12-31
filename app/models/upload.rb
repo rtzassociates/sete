@@ -47,7 +47,7 @@ class Upload < ActiveRecord::Base
 
   def self.uploaded_between(start_date, end_date)
 
-    start_date = Time.zone.now.to_s if start_date.blank?
+    start_date = '1970-01-01' if start_date.blank?
     start_date = Date.parse(start_date).beginning_of_day
 
     end_date   = Time.zone.now.to_s if end_date.blank?
